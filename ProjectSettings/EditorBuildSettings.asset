@@ -8,6 +8,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FlightTest.unity
     guid: ea18596ee0fe4a244a68bb3750ef8cb9
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 41ac91b2a39e2d84988ede4c01a4c043, type: 3}
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
