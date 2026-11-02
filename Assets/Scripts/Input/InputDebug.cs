@@ -8,10 +8,11 @@ namespace HelicopterSim
     {
         private IHelicopterInput input;
         private Rigidbody rb;
+
         [Header("UI")]
+        [SerializeField] private int textSize = 26;
+        [SerializeField] private Color textColor = Color.white;
         private GUIStyle labelStyle;
-        [SerializeField] int textSize = 26;
-        [SerializeField] Color textColor = Color.white;
 
         void Awake()
         {
@@ -32,15 +33,13 @@ namespace HelicopterSim
             }
 
             if (input == null) return;
-
+            if (rb == null) return;
             GUILayout.BeginArea(new Rect(20, 20, 700, 500));
 
-            // GUILayout.Label($"Collective: {input.Collective}", labelStyle);
+            GUILayout.Label($"Collective: {input.Collective * 100f:F0}% (hover ≈ 63%)", labelStyle);
             // GUILayout.Label($"Cyclic: {input.Cyclic}", labelStyle);
             // GUILayout.Label($"Yaw: {input.Yaw}", labelStyle);
-            // GUILayout.Space(10);
-
-            if (rb == null) return;
+            GUILayout.Space(10);
 
             Vector3 v = rb.linearVelocity;
             float horizontalSpeed = new Vector3(v.x, 0f, v.z).magnitude;
