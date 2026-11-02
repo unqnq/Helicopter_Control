@@ -7,7 +7,14 @@ namespace HelicopterSim
     {
         private Rigidbody rb;
         private IHelicopterInput input;
+
+        [Header("Lift")]
         [SerializeField] private float collectiveAuthority = 0.5f;
+
+        [Header("Torque")]
+        [SerializeField] float pitchTorque = 2000;
+        [SerializeField] float rollTorque = 550;
+        [SerializeField] float yawTorque = 1400;
 
         void Awake()
         {
@@ -24,6 +31,7 @@ namespace HelicopterSim
         void FixedUpdate()
         {
             ApplyLift();
+            ApplyTorque();
         }
 
         void ApplyLift()
@@ -31,6 +39,14 @@ namespace HelicopterSim
             float hoverLift = rb.mass * Physics.gravity.magnitude;
             float lift = hoverLift * (1 + input.Collective * collectiveAuthority);
             rb.AddForce(transform.up * lift);
+        }
+
+        void ApplyTorque()
+        {
+            Vector3 torque = new Vector3(input.Cyclic.y * pitchTorque,
+                                input.Yaw * yawTorque,
+                                -input.Cyclic.x * rollTorque);
+            rb.AddRelativeTorque(torque);
         }
     }
 }
