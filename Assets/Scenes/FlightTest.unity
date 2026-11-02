@@ -2251,6 +2251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08fd77e377b1d745bb737cd83434991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputDebug
+  textSize: 50
+  textColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1398058245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2292,6 +2294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d654a5806fbe14a9bd61d866b70288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HelicopterController
+  collectiveAuthority: 0.5
+  pitchTorque: 2000
+  rollTorque: 550
+  yawTorque: 1400
+  dragCoefficients: {x: 2.5, y: 24, z: 1.1}
+  angularDragCoefficients: {x: 2000, y: 1750, z: 550}
 --- !u!54 &1398058248
 Rigidbody:
   m_ObjectHideFlags: 0

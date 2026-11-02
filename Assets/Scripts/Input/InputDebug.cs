@@ -7,6 +7,11 @@ namespace HelicopterSim
     public class InputDebug : MonoBehaviour
     {
         private IHelicopterInput input;
+        private Rigidbody rb;
+        [Header("UI")]
+        private GUIStyle labelStyle;
+        [SerializeField] int textSize = 26;
+        [SerializeField] Color textColor = Color.white;
 
         void Awake()
         {
@@ -14,15 +19,39 @@ namespace HelicopterSim
             if (input == null)
                 Debug.LogError("InputDebug: на об'єкті немає компонента з IHelicopterInput", this);
 
+            rb = GetComponent<Rigidbody>();
         }
 
         void OnGUI()
         {
+            if (labelStyle == null)
+            {
+                labelStyle = new GUIStyle(GUI.skin.label);
+                labelStyle.fontSize = textSize;
+                labelStyle.normal.textColor = textColor;
+            }
+
             if (input == null) return;
 
-            GUI.Label(new Rect(10, 10, 400, 25), $"Collective: {input.Collective}");
-            GUI.Label(new Rect(10, 35, 400, 25), $"Cyclic: {input.Cyclic}");
-            GUI.Label(new Rect(10, 65, 400, 25), $"Yaw: {input.Yaw}");
+            GUILayout.BeginArea(new Rect(20, 20, 700, 500));
+
+            // GUILayout.Label($"Collective: {input.Collective}", labelStyle);
+            // GUILayout.Label($"Cyclic: {input.Cyclic}", labelStyle);
+            // GUILayout.Label($"Yaw: {input.Yaw}", labelStyle);
+            // GUILayout.Space(10);
+
+            if (rb == null) return;
+
+            Vector3 v = rb.linearVelocity;
+            float horizontalSpeed = new Vector3(v.x, 0f, v.z).magnitude;
+
+
+            GUILayout.Label($"Speed: {v.magnitude:F1} m/s ({v.magnitude * 3.6f:F0} km/h)", labelStyle);
+            GUILayout.Label($"Vertical: {v.y:F1} m/s", labelStyle);
+            GUILayout.Label($"Horizontal: {horizontalSpeed:F1} m/s", labelStyle);
+            GUILayout.Label($"Height: {transform.position.y:F1} m", labelStyle);
+
+            GUILayout.EndArea();
         }
     }
 }
