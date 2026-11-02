@@ -1,16 +1,36 @@
 using UnityEngine;
 
-public class HelicopterController : MonoBehaviour
+namespace HelicopterSim
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [RequireComponent(typeof(Rigidbody))]
+    public class HelicopterController : MonoBehaviour
     {
-        
-    }
+        private Rigidbody rb;
+        private IHelicopterInput input;
+        [SerializeField] private float collectiveAuthority = 0.5f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Awake()
+        {
+            rb = GetComponent<Rigidbody>();
+            input = GetComponent<IHelicopterInput>();
+
+            if (input == null)
+            {
+                Debug.LogError("HelicopterController: на об'єкті немає компонента з IHelicopterInput", this);
+                enabled = false;
+            }
+        }
+
+        void FixedUpdate()
+        {
+            ApplyLift();
+        }
+
+        void ApplyLift()
+        {
+            float hoverLift = rb.mass * Physics.gravity.magnitude;
+            float lift = hoverLift * (1 + input.Collective * collectiveAuthority);
+            rb.AddForce(transform.up * lift);
+        }
     }
 }
