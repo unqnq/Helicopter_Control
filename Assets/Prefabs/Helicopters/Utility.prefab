@@ -1814,7 +1814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cd1a5331159ed44aec21d775c770e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HelicopterSim.HelicopterInput
-  collectiveRate: 0.5
+  collectiveRate: 0.65
 --- !u!114 &7831022507226759344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1827,7 +1827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d654a5806fbe14a9bd61d866b70288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HelicopterSim.HelicopterController
-  maxLiftRatio: 1.6
+  maxLiftRatio: 1.8
   verticalDamping: 1600
   pitchTorque: 9985
   rollTorque: 2060
@@ -1853,9 +1853,9 @@ MonoBehaviour:
   mainRotor: {fileID: 4778726057915430720}
   tailRotor: {fileID: 3867470511269825287}
   idleSpeed: 360
-  maxSpeed: 1260
+  maxSpeed: 1800
   tailSpeedMultiplier: 2
-  spinUpRate: 500
+  spinUpRate: 1200
   clockwise: 0
 --- !u!114 &-4920228235296054372
 MonoBehaviour:

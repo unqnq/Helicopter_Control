@@ -54,7 +54,7 @@ namespace HelicopterSim
             {
                 Vector3 origin = transform.position + Vector3.up * 0.5f;
                 if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, groundCheckRange, controller.GroundMask))
-                    HeightAboveGround = hit.distance - 0.5f;
+                    HeightAboveGround = Mathf.Max(0f, hit.distance - 0.5f);   // полози можуть трохи "просісти" в землю - без від'ємних значень
             }
 
             Collective = input != null ? input.Collective : 0f;

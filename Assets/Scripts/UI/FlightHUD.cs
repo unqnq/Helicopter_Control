@@ -54,25 +54,28 @@ namespace HelicopterSim
 
             // SetText з форматом не створює новий рядок у пам'яті щокадру.
             // У TextMeshPro {0:0} = без знаків після коми, {0:1} = один знак
-            speedText?.SetText("{0:0}", telemetry.Speed);
-            heightText?.SetText("ASL {0:0}", telemetry.Height);
+            // Числа для тексту округлюємо заздалегідь (Round): так мікроколивання фізики на землі
+            // (0.01°, -0.02 м) не перемикають текст між "0" і "-0" щокадру
+            speedText?.SetText("{0:0}", Round(telemetry.Speed));
+            heightText?.SetText("ASL {0:0}", Round(telemetry.Height));
 
             if (heightAboveGroundText != null)
             {
-                if (telemetry.HeightAboveGround >= 0f) heightAboveGroundText.SetText("GND {0:0}", telemetry.HeightAboveGround);
+                if (telemetry.HeightAboveGround >= 0f) heightAboveGroundText.SetText("GND {0:0}", Round(telemetry.HeightAboveGround));
                 else heightAboveGroundText.SetText("GND ---");
             }
 
             if (verticalSpeedText != null)
             {
-                if (telemetry.VerticalSpeed >= 0f) verticalSpeedText.SetText("VS +{0:1}", telemetry.VerticalSpeed);
-                else verticalSpeedText.SetText("VS {0:1}", telemetry.VerticalSpeed);
+                float verticalSpeed = Round(telemetry.VerticalSpeed, 1);
+                if (verticalSpeed >= 0f) verticalSpeedText.SetText("VS +{0:1}", verticalSpeed);
+                else verticalSpeedText.SetText("VS {0:1}", verticalSpeed);
             }
 
-            collectiveText?.SetText("{0:0}%", telemetry.Collective * 100f);
-            directionText?.SetText("{0:0}°", telemetry.Direction);
-            rollText?.SetText("ROLL {0:0}°", telemetry.Roll);
-            pitchText?.SetText("PITCH {0:0}°", telemetry.Pitch);
+            collectiveText?.SetText("{0:0}%", Round(telemetry.Collective * 100f));
+            directionText?.SetText("{0:0}°", Round(telemetry.Direction) % 360f);   // 359.6 -> 0, а не 360
+            rollText?.SetText("ROLL {0:0}°", Round(telemetry.Roll));
+            pitchText?.SetText("PITCH {0:0}°", Round(telemetry.Pitch));
 
             if (collectiveFill != null)
                 collectiveFill.sizeDelta = new Vector2(collectiveFill.sizeDelta.x, telemetry.Collective * barHeight);
@@ -88,6 +91,14 @@ namespace HelicopterSim
             if (pitchMarkerRight != null) pitchMarkerRight.anchoredPosition = new Vector2(pitchMarkerRight.anchoredPosition.x, pitchY);
 
             compass?.SetHeading(telemetry.Direction);
+        }
+
+        // Округлення до потрібної кількості знаків без "мінус нуля":
+        // -0.3 округлюється до -0, і текст показав би "-0". Додавання 0f перетворює -0 на звичайний 0.
+        private static float Round(float value, int decimals = 0)
+        {
+            float factor = Mathf.Pow(10f, decimals);
+            return Mathf.Round(value * factor) / factor + 0f;
         }
     }
 }
