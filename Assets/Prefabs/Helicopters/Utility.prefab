@@ -1753,7 +1753,7 @@ GameObject:
   - component: {fileID: 2144277294081984631}
   - component: {fileID: 761194143520759144}
   m_Layer: 0
-  m_Name: Heli_Medium
+  m_Name: Utility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

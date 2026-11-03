@@ -2247,7 +2247,7 @@ GameObject:
   - component: {fileID: 9116657060672611456}
   - component: {fileID: 8241476509943807780}
   m_Layer: 0
-  m_Name: Heli_Heavy
+  m_Name: Transport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
