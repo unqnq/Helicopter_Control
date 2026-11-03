@@ -2245,7 +2245,7 @@ GameObject:
   - component: {fileID: 3823713920221506703}
   - component: {fileID: 7664595722051345882}
   - component: {fileID: 9116657060672611456}
-  - component: {fileID: 8241476509943807780}
+  - component: {fileID: 2203013950893417386}
   m_Layer: 0
   m_Name: Transport
   m_TagString: Untagged
@@ -2351,7 +2351,7 @@ MonoBehaviour:
   tailSpeedMultiplier: 2
   spinUpRate: 500
   clockwise: 0
---- !u!114 &8241476509943807780
+--- !u!114 &2203013950893417386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2360,11 +2360,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5528904413718707580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08fd77e377b1d745bb737cd83434991, type: 3}
+  m_Script: {fileID: 11500000, guid: 846b0a1ee29fa2146a23c304fb503cf7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HelicopterSim.InputDebug
-  textSize: 26
-  textColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EditorClassIdentifier: Assembly-CSharp::HelicopterSim.HelicopterTelemetry
+  groundCheckRange: 1000
 --- !u!1 &5986095280096352791
 GameObject:
   m_ObjectHideFlags: 0

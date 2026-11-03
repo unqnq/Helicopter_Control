@@ -677,7 +677,6 @@ GameObject:
   m_Component:
   - component: {fileID: 205179592508159277}
   - component: {fileID: 5285460240431810238}
-  - component: {fileID: 932307396796733133}
   - component: {fileID: 4829060822678859155}
   - component: {fileID: 1963405335725730004}
   - component: {fileID: 8306144266569337405}
@@ -717,20 +716,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HelicopterSim.HelicopterInput
   collectiveRate: 0.5
---- !u!114 &932307396796733133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2981057958362146719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08fd77e377b1d745bb737cd83434991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputDebug
-  textSize: 50
-  textColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &4829060822678859155
 MonoBehaviour:
   m_ObjectHideFlags: 0

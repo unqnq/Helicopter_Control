@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 6970417586699111867}
   - component: {fileID: 5932855744540299943}
   - component: {fileID: 819475813084406764}
-  - component: {fileID: 8874137424332964305}
+  - component: {fileID: 3166526653358021324}
   m_Layer: 0
   m_Name: Scout
   m_TagString: Untagged
@@ -926,7 +926,7 @@ MonoBehaviour:
   tailSpeedMultiplier: 2
   spinUpRate: 500
   clockwise: 0
---- !u!114 &8874137424332964305
+--- !u!114 &3166526653358021324
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -935,11 +935,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3998980691978360063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08fd77e377b1d745bb737cd83434991, type: 3}
+  m_Script: {fileID: 11500000, guid: 846b0a1ee29fa2146a23c304fb503cf7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HelicopterSim.InputDebug
-  textSize: 26
-  textColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EditorClassIdentifier: Assembly-CSharp::HelicopterSim.HelicopterTelemetry
+  groundCheckRange: 1000
 --- !u!1 &4023322949407857251
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,34 @@ namespace HelicopterSim
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private float groundCheckDistance = 0.4f;
         public bool IsGrounded { get; private set; }
+        public float MaxLiftRatio => maxLiftRatio;
+        public LayerMask GroundMask => groundMask;
+
+        // Поточні налаштування фізики одним об'єктом (для панелі тюнінгу та збереження)
+        public TuningData GetTuning()
+        {
+            return new TuningData
+            {
+                maxLiftRatio = maxLiftRatio,
+                verticalDamping = verticalDamping,
+                pitchTorque = pitchTorque,
+                rollTorque = rollTorque,
+                yawTorque = yawTorque,
+                drag = dragCoefficients,
+                angularDrag = angularDragCoefficients,
+            };
+        }
+
+        public void ApplyTuning(TuningData data)
+        {
+            maxLiftRatio = data.maxLiftRatio;
+            verticalDamping = data.verticalDamping;
+            pitchTorque = data.pitchTorque;
+            rollTorque = data.rollTorque;
+            yawTorque = data.yawTorque;
+            dragCoefficients = data.drag;
+            angularDragCoefficients = data.angularDrag;
+        }
 
         void Awake()
         {
